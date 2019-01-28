@@ -1,0 +1,31 @@
+{
+  "name": "polkadot-router",
+  "version": "1.0.0",
+  "description": "A nice simple router for polkadot",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js | tap-color"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TehShrike/polkadot-router.git"
+  },
+  "keywords": [
+    "router",
+    "polkadot"
+  ],
+  "author": "TehShrike",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/TehShrike/polkadot-router/issues"
+  },
+  "homepage": "https://github.com/TehShrike/polkadot-router#readme",
+  "devDependencies": {
+    "tap-color": "^1.1.0",
+    "zora": "^2.0.1"
+  },
+  "dependencies": {
+    "ordered-entries": "^1.0.0",
+    "path-match": "^1.2.4"
+  }
+}
