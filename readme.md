@@ -1,6 +1,6 @@
 # polkadot-router
 
-*See also [koa-bestest-router](https://github.com/TehShrike/koa-bestest-router)*
+*See also: [koa-bestest-router](https://github.com/TehShrike/koa-bestest-router)*
 
 Built for the tiny, nifty [polkadot](https://github.com/lukeed/polkadot) server framework.
 
