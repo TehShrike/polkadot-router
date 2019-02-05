@@ -41,7 +41,7 @@ polkaDot(router).listen(8080)
 
 ## `router = createRouter(routes, [notFoundHandler])`
 
-`routes` is a map of HTTP methods to maps of [path-to-regexp](https://github.com/pillarjs/path-to-regexp) routes to handler functions.
+`routes` is a map of HTTP methods to maps of [@tehshrike/regexparam](https://github.com/TehShrike/regexparam) routes to handler functions.
 
 Routes will be checked in a deterministic order from top to bottom, [thanks to ES2015](http://stackoverflow.com/questions/30076219/does-es6-introduce-a-well-defined-order-of-enumeration-for-object-properties).
 

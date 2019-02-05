@@ -25,7 +25,7 @@
     "zora": "^2.0.1"
   },
   "dependencies": {
-    "ordered-entries": "^1.0.0",
-    "path-match": "^1.2.4"
+    "@tehshrike/regexparam": "^1.0.2",
+    "ordered-entries": "^1.0.0"
   }
 }
