@@ -1,6 +1,6 @@
 {
   "name": "polkadot-router",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A nice simple router for polkadot",
   "main": "index.js",
   "scripts": {
