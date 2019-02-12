@@ -70,3 +70,24 @@ test(`Setting 404 when there are matching methods but no matching routes`, async
 	const { res: set404Response } = await polkaRequestSimulator(setting404Middleware, `PUT`, `/whatever`)
 	t.equal(set404Response.statusCode, 404)
 })
+
+test(`Thrown errors can be caught without an await`, async t => {
+	const router = createRouter({
+		GET: {
+			throw: () => {
+				throw new Error(`intentional`)
+			},
+		},
+	})
+
+	const url = `/throw`
+	const { path, query, search } = parseUrl(url)
+	const req = { method: `GET`, url, path, query, search }
+
+	try {
+		router(req, {})
+		t.fail(`An error should be thrown`)
+	} catch (err) {
+		t.equal(err.message, `intentional`)
+	}
+})

@@ -9,7 +9,7 @@ module.exports = function createRouter(methodsToRouteMaps, notFound = default404
 	validateInputMap(methodsToRouteMaps)
 	const getRoutesForMethod = processInputMaps(methodsToRouteMaps)
 
-	return async(req, res) => {
+	return (req, res) => {
 		const { method, path } = req
 		const routes = getRoutesForMethod(method)
 
