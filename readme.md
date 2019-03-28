@@ -26,12 +26,12 @@ const router = createRouter({
 			return 'Yay pie!'
 		},
 		'/cake/:flavor': async (req, res) => {
-			return `I like ${context.params.flavor} cake`
+			return `I like ${req.params.flavor} cake`
 		}
 	},
 	POST: {
 		'/cake/:flavor': async (req, res) => {
-			await someDb.addFlavor(context.params.flavor)
+			await someDb.addFlavor(req.params.flavor)
 		}
 	}
 }, notFoundHandler)
