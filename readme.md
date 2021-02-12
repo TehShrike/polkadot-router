@@ -21,16 +21,16 @@ const notFoundHandler = (req, res) => {
 }
 
 const router = createRouter({
-	GET: {
-		'/pie': async (req, res) => {
+	'/pie': {
+		GET: async (req, res) => {
 			return 'Yay pie!'
-		},
-		'/cake/:flavor': async (req, res) => {
-			return `I like ${req.params.flavor} cake`
 		}
 	},
-	POST: {
-		'/cake/:flavor': async (req, res) => {
+	'/cake/:flavor': {
+		GET: async (req, res) => {
+			return `I like ${req.params.flavor} cake`
+		},
+		POST: async (req, res) => {
 			await someDb.addFlavor(req.params.flavor)
 		}
 	}
