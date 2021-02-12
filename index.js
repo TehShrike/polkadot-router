@@ -58,23 +58,17 @@ module.exports = function createRouter(routesToMethodMaps, notFound = default404
 }
 
 function findMatchingRouteAndParseParams(routes, path) {
-	return getFirstTruthyReturnValue(routes, ({ matcher, ...rest }) => {
+	return routes.reduce((result, { matcher, ...rest }) => {
+		if (result) {
+			return result
+		}
+
 		const params = matcher(path)
 
 		return params && {
 			...rest,
 			params,
 		}
-	})
-}
-
-function getFirstTruthyReturnValue(ary, fn) {
-	return ary.reduce((result, input) => {
-		if (result) {
-			return result
-		}
-
-		return fn(input)
 	}, null)
 }
 
