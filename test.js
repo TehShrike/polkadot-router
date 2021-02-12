@@ -22,17 +22,19 @@ const wait = time => new Promise(resolve => setTimeout(resolve, time))
 
 test(`Basic cases`, async t => {
 	const router = createRouter({
-		GET: {
-			'/yes/but': async() => {
+		'/yes/but': {
+			GET: async() => {
 				console.log(`but called`)
 				await wait(50)
 
 				return `lol butts`
 			},
-			'/yes/:and': async req => `you said ${ req.params.and }`,
 		},
-		POST: {
-			'/whatever': async() => {
+		'/yes/:and': {
+			GET: async req => `you said ${ req.params.and }`,
+		},
+		'/whatever': {
+			POST: async() => {
 				t.fail()
 			},
 		},
@@ -60,7 +62,7 @@ test(`Setting 404 when there are no matching methods`, async t => {
 })
 
 test(`Setting 404 when there are matching methods but no matching routes`, async t => {
-	const dummyRoute = { PUT: { '/meh': () => undefined } }
+	const dummyRoute = { '/meh': { PUT: () => undefined } }
 	const no404Middleware = createRouter(dummyRoute, noop)
 	const setting404Middleware = createRouter(dummyRoute)
 
@@ -73,8 +75,8 @@ test(`Setting 404 when there are matching methods but no matching routes`, async
 
 test(`Thrown errors can be caught without an await`, async t => {
 	const router = createRouter({
-		GET: {
-			throw: () => {
+		throw: {
+			GET: () => {
 				throw new Error(`intentional`)
 			},
 		},
