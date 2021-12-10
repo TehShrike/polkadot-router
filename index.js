@@ -11,12 +11,9 @@ const createRouteMatcher = routeString => {
 			return null
 		}
 
-		const params = {}
-		keys.forEach((key, i) => {
-			params[key] = matches[i + 1] || null
-		})
-
-		return params
+		return Object.fromEntries(
+			keys.map((key, i) => [ key, matches[i + 1] || null ])
+		)
 	}
 }
 
