@@ -1,8 +1,8 @@
-const regexpararm = require(`@tehshrike/regexparam`)
-const orderedEntries = require(`ordered-entries`)
+import { parse } from 'regexparam'
+import orderedEntries from 'ordered-entries'
 
 const createRouteMatcher = routeString => {
-	const { keys, pattern } = regexpararm(routeString)
+	const { keys, pattern } = parse(routeString)
 
 	return path => {
 		const matches = pattern.exec(path)
@@ -12,7 +12,7 @@ const createRouteMatcher = routeString => {
 		}
 
 		return Object.fromEntries(
-			keys.map((key, i) => [ key, matches[i + 1] || null ])
+			keys.map((key, i) => [ key, matches[i + 1] || null ]),
 		)
 	}
 }
@@ -22,7 +22,7 @@ const default404 = (req, res) => {
 	return `404 not found`
 }
 
-module.exports = function createRouter(routesToMethodMaps, notFound = default404) {
+export default function createRouter(routesToMethodMaps, notFound = default404) {
 	const routes = orderedEntries(routesToMethodMaps).map(([ routeString, methodMap ]) => {
 		validateInputMap(methodMap)
 

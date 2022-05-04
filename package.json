@@ -1,5 +1,6 @@
 {
   "name": "polkadot-router",
+  "type": "module",
   "version": "3.0.0",
   "description": "A nice simple router for polkadot",
   "main": "index.js",
@@ -25,7 +26,7 @@
     "zora": "^2.0.1"
   },
   "dependencies": {
-    "@tehshrike/regexparam": "^1.0.2",
-    "ordered-entries": "^1.0.0"
+    "ordered-entries": "^1.0.0",
+    "regexparam": "^2.0.0"
   }
 }

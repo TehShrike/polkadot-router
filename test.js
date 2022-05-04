@@ -1,6 +1,6 @@
-const parseUrl = require(`url`).parse
-const test = require(`zora`)
-const createRouter = require(`./`)
+import { parse as parseUrl } from 'url'
+import test from 'zora'
+import createRouter from "./index.js"
 
 async function polkaRequestSimulator(router, method, url) {
 	const { path, query, search } = parseUrl(url)
@@ -24,7 +24,6 @@ test(`Basic cases`, async t => {
 	const router = createRouter({
 		'/yes/but': {
 			GET: async() => {
-				console.log(`but called`)
 				await wait(50)
 
 				return `lol butts`
